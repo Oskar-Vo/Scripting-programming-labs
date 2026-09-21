@@ -1,0 +1,54 @@
+%% Oskar Voroniuk
+%% EKf-25
+%% 2026-09-21
+
+clear all
+clc
+% Privaloma uzduotis 1
+vektorius1 = (-2*pi : pi/4 : 2*pi)';
+
+tangentas = tan(vektorius1);
+
+c = vektorius1 ./ tangentas;
+
+%% Privaloma uzduotis 2
+Z = randn(3, 2)
+
+
+Z_transp = Z'
+
+
+A = randn(3, 1)
+Nauja_Matrica = [Z, A]
+
+determinantas = det(Nauja_Matrica);
+disp(determinantas);
+
+%% Privaloma uzduotis 3
+clear all
+clc
+A = 4;
+f = 3;
+sigma = 1;
+U1 = 2.5;
+U2 = 1.5;
+
+t = 0 : 0.001 : 1;
+s_betriusmo = A * sin(2*pi*f*t) + 0.5*A*cos(4*pi*f*t);
+n = sigma * randn(size(t));
+s = s_betriusmo + n;
+
+s_virsu1 = s(s > U1);
+
+s_filtruotas = s; 
+s_filtruotas(abs(s_filtruotas) < U2) = 0;
+dydis_nefiltruotos_s = length(s);
+disp(dydis_nefiltruotos_s);
+
+dydis_a = length(s_virsu1);
+disp(dydis_a);
+
+maks_filtruotas = max(s_filtruotas);
+min_filtruotas = min(s_filtruotas);
+disp(maks_filtruotas);
+disp(min_filtruotas);
