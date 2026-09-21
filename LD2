@@ -12,14 +12,14 @@ tangentas = tan(vektorius1);
 c = vektorius1 ./ tangentas;
 
 %% Privaloma uzduotis 2
-Z = randn(3, 2)
+Z = randn(3, 2);
 
 
-Z_transp = Z'
+Z_transp = Z';
 
 
-A = randn(3, 1)
-Nauja_Matrica = [Z, A]
+A = randn(3, 1);
+Nauja_Matrica = [Z, A];
 
 determinantas = det(Nauja_Matrica);
 disp(determinantas);
@@ -52,3 +52,18 @@ maks_filtruotas = max(s_filtruotas);
 min_filtruotas = min(s_filtruotas);
 disp(maks_filtruotas);
 disp(min_filtruotas);
+
+%% Papildoma uzduotis
+clc
+A = input('Iveskite vektoriu A: ');
+B = A(2:2:end);
+
+nelyginiai = A(1:2:end);
+C = nelyginiai(end:-1:1);
+
+disp('Vektorius B: ');
+disp(B);
+
+disp('Vektorius C: ');
+disp(C);
+pause;
