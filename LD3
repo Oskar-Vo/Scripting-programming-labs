@@ -72,3 +72,74 @@ bar(ivertinimai, 'stacked');
 title('b) Egzaminų rezultatai (diskretus grafikas)');
 xlabel('Studentas');
 ylabel('Pažymių suma');
+
+%% Papildoma uzduotis
+clear all
+clc
+
+A_amp = 4; 
+f = 3;
+sigma = 1;
+U1 = 2.5; 
+U2 = 1.5; 
+
+t = 0 : 0.001 : 1;
+s_betriusmo = A_amp * sin(2*pi*f*t) + 0.5*A_amp*cos(4*pi*f*t);
+n = sigma * randn(size(t));
+s = s_betriusmo + n; 
+
+s_virsu1 = s(s > U1);
+
+s_filtruotas = s; 
+s_filtruotas(abs(s_filtruotas) < U2) = 0; 
+
+figure(4);
+
+% Viršutinis grafikas
+subplot(2, 1, 1);
+
+plot(t, s, 'b-.', 'LineWidth', 1); 
+hold on;
+plot(t, s_filtruotas, 'g-', 'LineWidth', 1.2);
+
+yline(U1, 'r--', 'U_1 riba', 'LineWidth', 1.25);
+yline(U2, 'g-', 'U_2 riba', 'LineWidth', 1.25);
+
+title('Pradinio ir filtruoto signalų analizė');
+xlabel('Laikas (s)', 'Color', 'b', 'FontSize', 14);
+ylabel('Įtampa (V)', 'Color', 'b', 'FontSize', 14);
+
+axis([min(t) max(t) min(s)-1 max(s)+1]);
+grid on;
+legend({'Pradinis signalas (s)', 'Filtruotas signalas'}, 'Location', 'best');
+hold off;
+
+% Apatinis grafikas 
+subplot(2, 1, 2);
+
+virsyja_indeksai = s > U1;
+t_virsyja = t(virsyja_indeksai);
+s_virsyja = s(virsyja_indeksai);
+
+
+stem(t_virsyja, s_virsyja, 'b', 'Marker', 'o', 'LineWidth', 1);
+hold on;
+
+
+[max_val, max_idx] = max(s_virsyja);
+[min_val, min_idx] = min(s_virsyja);
+
+
+plot(t_virsyja(min_idx), min_val, 'rv', 'MarkerFaceColor', 'r', 'MarkerSize', 10, 'LineWidth', 1.5);
+plot(t_virsyja(max_idx), max_val, 'k^', 'MarkerFaceColor', 'k', 'MarkerSize', 10, 'LineWidth', 1.5);
+
+title('Reikšmės, viršijančios U_1 ribą, ir signalo ekstremumai');
+xlabel('Laikas (s)', 'Color', 'b', 'FontSize', 14);
+ylabel('Įtampa (V)', 'Color', 'b', 'FontSize', 14);
+
+grid on;
+legend({'Viršija U_1 (Diskretus)', 'Min įtampa (Atrinktų duomenų)', 'Max įtampa'}, 'Location', 'best');
+
+
+axis([0 1 0 7.5]); 
+hold off;
