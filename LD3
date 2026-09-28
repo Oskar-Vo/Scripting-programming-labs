@@ -1,0 +1,74 @@
+%% Oskar Voroniuk
+%% EKf-25
+%% 2026-09-28
+
+clear all
+clc
+% Privaloma uzduotis 1
+
+x1 = 0:0.1:2*pi;
+
+figure(1);
+y1 = x1.^3 + tan(x1);
+plot(x1, y1, 'bo');
+
+title('Funkcijos f(x) = x^3 + tan(x) grafikas');
+xlabel('X ašis');
+ylabel('Y ašis');
+
+axis([min(x1) max(x1) min(y1) max(y1)]);
+legend('f(x) = x^3 + tan(x)', 'Location', 'best');
+grid on;
+%%
+figure(2)
+x2 = 0:0.1:1;
+y2_1 = exp(x2);
+y2_2 = exp(3*x2);
+y2_3 = exp(5*x2);
+plot(x2, y2_1, x2, y2_2, x2, y2_3);
+
+title('Eksponentinių funkcijų grafikai');
+xlabel('X ašis');
+ylabel('Y ašis');
+
+min_y = min([min(y2_1), min(y2_2), min(y2_3)]);
+max_y = max([max(y2_1), max(y2_2), max(y2_3)]);
+axis([min(x2) max(x2) min_y max_y]);
+
+legend('f(x) = e^x', 'f(x) = e^{3x}', 'f(x) = e^{5x}', 'Location', 'best');
+
+grid on;
+
+%%
+clear all
+clc
+% Privaloma uzduotis 2
+
+ivertinimai = [
+    5,  8,  4,  7;  
+    4,  8,  9,  5;  
+    4,  6,  9,  5;  
+    3,  4,  6,  4;  
+    5,  8,  7,  8;  
+    5,  5,  6,  2   
+    ];
+
+
+
+figure(3)
+
+subplot(2, 1, 1); 
+bar(ivertinimai);
+title('a) Studentų egzaminų rezultatai');
+xlabel('Studentas');
+ylabel('Pažymys');
+ylim([0 10]); 
+legend({'1 egz', '2 egz', '3 egz', '4 egz'}, 'Location', 'bestoutside');
+xticklabels({'Vardas 1', 'Vardas 2', 'Vardas 3', 'Vardas 4', 'Vardas 5', 'Vardas 6'});
+
+%2 grafikas
+subplot(2, 1, 2); 
+bar(ivertinimai, 'stacked');
+title('b) Egzaminų rezultatai (diskretus grafikas)');
+xlabel('Studentas');
+ylabel('Pažymių suma');
