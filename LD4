@@ -17,16 +17,17 @@ Z = sin(X.^2 + Y.^2);
 
 figure(1);
 surf(X, Y, Z);
-
+view(15, 15);
 colormap('winter');            
 shading interp; 
-view(15, 15);
+
 
 title('Tridatis paviršius: f(x,y) = sin(x^2 + y^2)');
 xlabel('X ašis');
 ylabel('Y ašis');
 zlabel('Z reikšmės');
 grid on;
+
 
 
 %% Privaloma uzduotis 1b
@@ -54,3 +55,43 @@ xlabel('X ašis');
 ylabel('Y ašis');
 zlabel('Z reikšmės');
 grid on;
+
+
+%% Papildoma uzduotis
+clear all
+clc
+
+x = linspace(-2, 2, 50);
+y = linspace(-2, 2, 50);
+[X, Y] = meshgrid(x, y);
+
+Z = 1 - (X.^2 + Y.^2);
+
+figure('Name', '14 variantas: Funkcijos surf savybės', 'NumberTitle', 'off');
+
+% A variantas
+subplot(1, 3, 1);
+surf(X, Y, Z);
+shading interp;            
+camlight left; 
+lighting gouraud; 
+title('a) Su apšvietimu (camlight)');
+xlabel('X'); ylabel('Y'); zlabel('Z');
+grid on;
+
+% B variantas
+subplot(1, 3, 2);
+meshc(X, Y, Z);    
+title('b) Su kontūru pagrinde');
+xlabel('X'); ylabel('Y'); zlabel('Z');
+grid on;
+
+% C variantas
+
+subplot(1, 3, 3);
+surf(X, Y, Z); 
+title('c) Paprastas paviršius');
+xlabel('X'); ylabel('Y'); zlabel('Z');
+grid on;
+
+colormap('winter');
