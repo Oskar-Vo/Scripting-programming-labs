@@ -1,0 +1,56 @@
+%% Oskar Voroniuk
+%% EKf-25
+%% 2026-09-28
+
+clear all
+clc
+% Privaloma uzduotis 1a
+x_rand = (2 * rand(1, 200) -1) .* sqrt(pi / 2);
+y_rand = (2 * rand(1, 200) -1) .* sqrt(pi / 2);
+
+x = sort(x_rand);
+y = sort(y_rand);
+
+[X, Y] = meshgrid(x, y);
+
+Z = sin(X.^2 + Y.^2);
+
+figure(1);
+surf(X, Y, Z);
+
+colormap('winter');            
+shading interp; 
+view(15, 15);
+
+title('Tridatis paviršius: f(x,y) = sin(x^2 + y^2)');
+xlabel('X ašis');
+ylabel('Y ašis');
+zlabel('Z reikšmės');
+grid on;
+
+
+%% Privaloma uzduotis 1b
+clear all
+clc
+
+x = linspace(-1, 1, 100);
+y = linspace(-1, 1, 100);
+
+[X, Y] = meshgrid(x, y);
+
+R = sqrt(X.^2 + Y.^2);
+Z = exp(R.^2);
+
+figure(2);
+surf(X, Y, Z);
+
+colormap('parula');  
+shading flat;  
+
+view(20, 20);
+
+title('Trimatis paviršius: z(r) = e^{r^2}');
+xlabel('X ašis');
+ylabel('Y ašis');
+zlabel('Z reikšmės');
+grid on;
