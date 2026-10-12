@@ -1,0 +1,65 @@
+% Oskar Voroniuk
+% EKf-25
+% 2026-09-28
+
+clear all
+clc
+% Privaloma uzduotis 1
+
+A = cell(2,2);
+A{1,1} = [1, 2, 3, 4];         
+A{1,2} = 'Tekstas 1';       
+A{2,1} = true;               
+A{2,2} = int32(10);          
+
+B = cell(2,2);
+B{1,1} = pi;                
+B{1,2} = "Tekstas 2";        
+B{2,1} = uint8(255);         
+B{2,2} = struct('id', 1);    
+
+C = cat(3, A, B);
+
+figure;
+cellplot(C);
+title('Trimatės celių struktUros grafinis vaizdas');
+
+fprintf('Masyvo A ilgis (length): %d\n', length(A));
+fprintf('Ar elementas A{2,1} yra realusis skaičius (isreal): %d\n', isreal(A{2,1}));
+fprintf('Ar elementas A{1,1} yra tuščias (isempty): %d\n', isempty(A{1,1}));
+
+tipai = cellfun(@class, A, 'UniformOutput', false);
+disp('Masyvo A elementų duomenų tipai:');
+disp(tipai);
+
+%% Privaloma uzduotis 2
+clear all
+clc
+
+while true
+    disp('Naujas skaičiavimų ciklas');
+    m = input('Iveskite m reikšme: ');
+    n = input('Iveskite n reikšme: ');
+
+    if m == n
+        disp('Ivestos vienodos reikšmės. Programa baigia darba.');
+        break;
+    end
+
+    while m > 0 && n > 0
+        if m > n
+            m = m - n;
+        else
+            n = n - m;
+        end
+    end
+
+    if m > 0
+        rezultatas = m;
+    else
+        rezultatas = n;
+    end
+
+    disp(['Maziausia teigiama reiksme: ', num2str(rezultatas)]);
+    disp(' '); 
+end
