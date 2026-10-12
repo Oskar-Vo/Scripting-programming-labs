@@ -22,14 +22,14 @@ C = cat(3, A, B);
 
 figure;
 cellplot(C);
-title('Trimatės celių struktUros grafinis vaizdas');
+title('Trimatės celiu strukturos grafinis vaizdas');
 
 fprintf('Masyvo A ilgis (length): %d\n', length(A));
 fprintf('Ar elementas A{2,1} yra realusis skaičius (isreal): %d\n', isreal(A{2,1}));
 fprintf('Ar elementas A{1,1} yra tuščias (isempty): %d\n', isempty(A{1,1}));
 
-tipai = cellfun(@class, A, 'UniformOutput', false);
-disp('Masyvo A elementų duomenų tipai:');
+tipai = cellfun(@class, B, 'UniformOutput', false);
+disp('Masyvo B elementų duomenų tipai:');
 disp(tipai);
 
 %% Privaloma uzduotis 2
@@ -63,3 +63,31 @@ while true
     disp(['Maziausia teigiama reiksme: ', num2str(rezultatas)]);
     disp(' '); 
 end
+
+%% Papildoma uzduotis
+clear all
+clc
+
+sakinys = input('Iveskite sakini (su keliais tarpais tarp zodziu): ', 's');
+sakinys = strtrim(sakinys);
+
+while contains(sakinys, '  ')
+    sakinys = strrep(sakinys, '  ', ' ');
+end
+
+disp('Sutvarkytas sakinys: ');
+disp(sakinys);
+
+zodziu_skaicius = 0;
+
+if ~isempty(sakinys)
+    zodziu_skaicius = 1; 
+
+    for i = 1:length(sakinys)
+        if sakinys(i) == ' '
+            zodziu_skaicius = zodziu_skaicius + 1;
+        end
+    end
+end
+
+disp(['Ivestu zodziu skaicius: ', num2str(zodziu_skaicius)]);
