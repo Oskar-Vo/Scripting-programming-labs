@@ -1,1 +1,29 @@
+% Oskar Voroniuk
+% EKf-25
+% 2026-10-19
+
+clear all
+clc
+% Privaloma uzduotis 1
+help matfunkc
+res1 = matfunkc(-pi/2)
+res2 = matfunkc(pi/2)
+
+%% Privaloma uzduotis 2
+clear all
+clc
+global x y 
+x = 2*pi : -0.1 : -2*pi;
+y = zeros(size(x));
+
+funkcija_ne_nulis;
+funkcija_nulis
+
+plot(x, y, '--y*', 'LineWidth', 1.5, 'MarkerEdgeColor', 'k');
+title('Matematinės funkcijos y(x) grafikas');
+xlabel('x');
+ylabel('y');
+grid on;
+
+%% Papildoma uzduotis 
 
