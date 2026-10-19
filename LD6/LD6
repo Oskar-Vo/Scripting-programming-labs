@@ -9,6 +9,7 @@ help matfunkc
 res1 = matfunkc(-pi/2)
 res2 = matfunkc(pi/2)
 
+
 %% Privaloma uzduotis 2
 clear all
 clc
@@ -26,4 +27,9 @@ ylabel('y');
 grid on;
 
 %% Papildoma uzduotis 
+x_test = 0.1 : 0.1 : 1.5;
+[t_rez, kt_rez] = graftancotan(x_test)
+
+graftancotan(x_test)
+
 
